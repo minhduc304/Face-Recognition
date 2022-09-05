@@ -18,7 +18,12 @@ from PIL import Image, ImageTk
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-obama_image = face_recognition.load_image_file("obama.jpg")
+
+#  Edit in here
+# 1. Add more images some person in folder faces
+# 2. Edit code. Read all face. Save all face's encoding to dict
+
+obama_image = face_recognition.load_image_file("faces/obama.jpg")
 obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 
 
@@ -28,6 +33,8 @@ known_face_encodings = [
 ]
 known_face_names = [
     "Barack Obama"]
+
+# Edit in here
 
 # Initialize some variables
 face_locations = []
@@ -42,7 +49,7 @@ window.geometry('700x350')
 #Store video feed in Label object
 label = Label()
 
-def show_frames(frame, label):
+def show_frames(frame):
     cv2image= cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     img = Image.fromarray(frame)
     imgtk = ImageTk.PhotoImage(image = img)
@@ -118,7 +125,8 @@ while True:
         font = cv2.FONT_HERSHEY_DUPLEX
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-    show_frames(frame, label)
+    show_frames(frame) 
+    
     
     # Display the resulting image
     cv2.imshow('Video', frame)
