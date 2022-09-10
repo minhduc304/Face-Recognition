@@ -47,11 +47,11 @@ window = Tk()
 window.geometry('700x350')
 
 #Store video feed in Label object
-label = Label()
+label = Label(window)
 
 def show_frames(frame):
     cv2image= cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-    img = Image.fromarray(frame)
+    img = Image.fromarray(cv2image)
     imgtk = ImageTk.PhotoImage(image = img)
     label.imgtk = imgtk
     label.configure(image=imgtk)
